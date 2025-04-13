@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://devcjs.co.kr',
-  base: '/blog/',
+  base: '/',
   outDir: '../docs',
   srcDir: './src', 
   compressHTML: true,
