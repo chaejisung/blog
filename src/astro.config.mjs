@@ -3,17 +3,19 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://devcjs.co.kr',
-  base: '/',
+  base: '/blog/',
   outDir: '../docs',
-  srcDir: './src/src', // ✅ 실제로 index.astro 있는 경로 기준
+  srcDir: './src', 
   compressHTML: true,
   trailingSlash: 'ignore',
   output: 'static',
-  integrations: [react()],
+  integrations: [
+    react()
+  ],
   vite: {
     resolve: {
       alias: {
-        '@': new URL('./src/src', import.meta.url).pathname // ✅ 절대경로 alias도 맞춰야 함
+        '@': new URL('./src', import.meta.url).pathname  //vite.resolve.alias는 astro.config.mjs 기준 경로(따라서 ./src/src가 아닌 ./src)
       },
     },
   },
