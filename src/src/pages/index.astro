@@ -1,9 +1,10 @@
 ---
-// src/pages/index.astro
+//<!-- 전체단위 공통 스타일 적용 -->
 import '@/styles/style.css'; 
 
-//<!-- 전체단위 공통 스타일 적용 -->
+// src/pages/index.astro
 import Layout from '@/layouts/Layout.astro';
+import TypingText from '@/components/TypingText.jsx';
 ---
 
 <Layout class="layout">
@@ -13,8 +14,10 @@ import Layout from '@/layouts/Layout.astro';
       <span class="badge">I wanna be Software Developer</span>
       <h1>Hello, <br/> Welcome to my TraceBack</h1>
       <p>
-        I write about web development, programming, and technology.<br />
-        This is my digital garden where I share my thoughts and experiences.
+        I am aspiring to become a software developer, <br />
+        with a keen interest in <TypingText client:load />, <br />
+        My goal is to be a better version of myself than I was yesterday. <br />
+        I write about web development, programming, and technology.
       </p>
       <div class="buttons">
         <a href="/post" class="btn primary">Read My Blog →</a>
@@ -57,9 +60,10 @@ import Layout from '@/layouts/Layout.astro';
       <h2>Who am I?</h2>
       <p>I'm a software developer passionate about building web applications and sharing knowledge with the community.</p>
       <ul>
-        <li>💻 Full-stack developer with 5+ years of experience</li>
-        <li>⚛️ Specialized in React, Next.js, and Node.js</li>
-        <li>🛠️ Open source contributor and technical writer</li>
+        <li>💻 Aspiring software developer with an interest in web and server (backend) development</li>
+        <li>⚙️ Prefer frameworks like Java Spring and Python Django</li>
+        <li>🌐 Passionate about Web Frontend and System programming</li>
+        
       </ul>
       <a href="/info" class="btn primary">More About Me</a>
     </div>
@@ -118,6 +122,14 @@ import Layout from '@/layouts/Layout.astro';
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 1rem;
+  }
+
+  .typing-text {
+    font-weight: bold;
+    color: #000;
+    border-right: 2px solid #000;
+    padding-right: 2px;
+    white-space: nowrap;
   }
 
   h1 {
