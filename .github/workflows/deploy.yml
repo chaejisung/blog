@@ -20,14 +20,16 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./src
 
       - name: Build site
         run: npm run build
+        working-directory: ./src
 
       - name: Deploy to GitHub Pages (docs folder)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./src/docs
           publish_branch: main
-          keep_files: false   # false 면 매번 docs파일 밀어버리고 생성
+          keep_files: false
