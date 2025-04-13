@@ -9,11 +9,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -22,13 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./src
 
       - name: Build site
         run: npm run build
+        working-directory: ./src
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages 
+          publish_dir: ./src/docs   # src/docs로 변경됨!
+          publish_branch: gh-pages
