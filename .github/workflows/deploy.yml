@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -19,17 +21,14 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm ci
-        working-directory: ./src
+        run: npm install
 
       - name: Build site
         run: npm run build
-        working-directory: ./src
 
-      - name: Deploy to GitHub Pages (docs folder)
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./src/docs
-          publish_branch: deploy
-          keep_files: false
+          publish_dir: ./docs
+          publish_branch: gh-pages
