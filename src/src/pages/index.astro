@@ -1,11 +1,333 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// src/pages/index.astro
+import Layout from 'src/layouts/Layout.astro';
 ---
+<!-- 전체단위 공통 스타일 적용 -->
+<link rel="stylesheet" href="/src/styles/style.css">
 
-<Layout>
-	<Welcome />
+<Layout class="layout">
+  <!-- 최상단 랜딩 -->
+  <section class="landing">
+    <div class="content">
+      <span class="badge">I wanna be Software Developer</span>
+      <h1>Hello, <br/> Welcome to my TraceBack</h1>
+      <p>
+        I write about web development, programming, and technology.<br />
+        This is my digital garden where I share my thoughts and experiences.
+      </p>
+      <div class="buttons">
+        <a href="/post" class="btn primary">Read My Blog →</a>
+        <a href="/info" class="btn secondary">About Me</a>
+      </div>
+    </div>
+
+    <div class="image-box">
+      <div class="image-placeholder">📷</div>
+    </div>
+  </section>
+
+  <!-- 최신 게시물 섹션 -->
+  <section class="posts">
+    <div class="section-header">
+      <span class="section-badge">Recent Posts</span>
+      <h2>Latest from the Blog</h2>
+      <p>Check out my latest articles and tutorials on web development, programming, and technology.</p>
+    </div>
+
+    <!-- 이 자리에 최신 게시물들이 오도록 설정 -->
+    <!-- <div class="post-cards">
+      <div class="card">
+        <h3>Building a Modern Web App</h3>
+        <p>Learn how to build with Astro and Tailwind.</p>
+        <a href="#">Read More →</a>
+      </div>
+      <div class="card">
+        <h3>Deep Dive into Astro</h3>
+        <p>Understand how Astro compiles islands architecture.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div> -->
+  </section>
+
+  <!-- About me 섹션 -->
+  <section class="about-section">
+    <div class="about-content">
+      <span class="section-badge">About Me</span>
+      <h2>Who am I?</h2>
+      <p>I'm a software developer passionate about building web applications and sharing knowledge with the community.</p>
+      <ul>
+        <li>💻 Full-stack developer with 5+ years of experience</li>
+        <li>⚛️ Specialized in React, Next.js, and Node.js</li>
+        <li>🛠️ Open source contributor and technical writer</li>
+      </ul>
+      <a href="/info" class="btn primary">More About Me</a>
+    </div>
+    
+    <div class="about-images">
+      <div class="grid-img"></div>
+      <div class="grid-img"></div>
+      <div class="grid-img"></div>
+      <div class="grid-img"></div>
+    </div>
+  </section>
+  
+
 </Layout>
+
+
+<style>
+  .layout {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  section {
+    width: 100vw;
+    height: 85vh;
+  }
+
+  /* 최상단 랜딩 */
+  .landing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+
+    margin: 0 auto;
+    padding: 10rem 7rem;
+    padding-top: 20rem; 
+    padding-bottom: 1.5rem; 
+
+    border-bottom: 1px solid #ccc;
+  }
+
+  .content {
+    flex: 1 1 500px;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #f3f3f3;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 1.2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+  }
+
+  .primary {
+    background: black;
+    color: white;
+  }
+
+  .secondary {
+    background: #f3f3f3;
+    color: #111;
+  }
+
+  .image-box {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-placeholder {
+    background: #e5e5e5;
+    width: 100%;
+    height: 300px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #999;
+  }
+
+  @media (max-width: 768px) {
+    .landing {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem 1.5rem;
+      min-height: auto;
+    }
+
+    .image-box {
+      width: 100%;
+    }
+
+    .image-placeholder {
+      height: 200px;
+    }
+  }
+
+  /* 최신 게시물 */
+  .posts {
+    padding: 6rem 2rem;
+    background-color: #f8f9fa;
+    text-align: center;
+
+    border-bottom: 1px solid #f8f9fa;
+  }
+
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .section-badge {
+    display: inline-block;
+    background: #eee;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .posts h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .posts p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .post-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 300px;
+    text-align: left;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  .card a {
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+  }
+
+  /* About me 부분 */
+  .about-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+    background-color: #fff;
+    
+    gap: 1.5rem;
+    padding: 10rem 7rem;
+    
+    border-top: 1px solid black;
+  }
+
+  .about-content {
+    flex: 1 1 480px;
+  }
+
+  .about-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 1rem 0;
+  }
+
+  .about-content p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .about-content li {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .about-images {
+    flex: 0 0 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .grid-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #e5e5e5;
+    border-radius: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      flex-direction: column;
+      padding: 3rem 1.5rem;
+    }
+
+    .about-images {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
